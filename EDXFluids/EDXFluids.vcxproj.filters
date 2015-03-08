@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Base">
+      <UniqueIdentifier>{2bb66bf9-bd2c-4960-bc8c-979bd0d0b80c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PCGSolver">
+      <UniqueIdentifier>{5868030f-abba-465e-b271-cc1d538472db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Smoke">
+      <UniqueIdentifier>{c6f1daff-7422-41f0-abe4-40c8fa015a0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Water">
+      <UniqueIdentifier>{59547879-c746-4438-84c6-79abf650fcc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Util">
+      <UniqueIdentifier>{fe2c70d5-2630-4ba1-96c4-874ea865e32f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Ocean">
+      <UniqueIdentifier>{2bb04fc1-65a1-4bba-b05f-a12cee367891}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Base\Fluid.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\VectorVisualizer.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Water\LevelSet.cpp">
+      <Filter>Source Files\Water</Filter>
+    </ClCompile>
+    <ClCompile Include="Water\Liquid.cpp">
+      <Filter>Source Files\Water</Filter>
+    </ClCompile>
+    <ClCompile Include="Smoke\Smoke.cpp">
+      <Filter>Source Files\Smoke</Filter>
+    </ClCompile>
+    <ClCompile Include="Ocean\Ocean.cpp">
+      <Filter>Source Files\Ocean</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Base\Fluid.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\ForwardDecl.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\VectorVisualizer.h">
+      <Filter>Source Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Water\LevelSet.h">
+      <Filter>Source Files\Water</Filter>
+    </ClInclude>
+    <ClInclude Include="Water\Liquid.h">
+      <Filter>Source Files\Water</Filter>
+    </ClInclude>
+    <ClInclude Include="Smoke\Smoke.h">
+      <Filter>Source Files\Smoke</Filter>
+    </ClInclude>
+    <ClInclude Include="PCGSolver\blas_wrapper.h">
+      <Filter>Source Files\PCGSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="PCGSolver\pcg_solver.h">
+      <Filter>Source Files\PCGSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="PCGSolver\sparse_matrix.h">
+      <Filter>Source Files\PCGSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="Ocean\Ocean.h">
+      <Filter>Source Files\Ocean</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
