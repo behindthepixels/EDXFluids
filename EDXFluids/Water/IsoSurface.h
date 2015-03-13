@@ -55,6 +55,7 @@ namespace EDX
 			void LerpVertex(IsoVertex& Vertex, MCNode Node1, MCNode Node2);
 			void Polygonize();
 			void MarchingCube();
+			void GenerateObjMesh() const;
 			void Render();
 			void Release();
 		};
