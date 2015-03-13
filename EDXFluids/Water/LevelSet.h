@@ -29,7 +29,7 @@ namespace EDX
 				}
 			}
 			void ReInitSDF(const Array<Dimension, CellType>& markers, const CellType type, const float fNarrowBand = 1e10f);
-			Array<Dimension, float>& GetPhi() { return mPhi; }
+			const Array<Dimension, float>& GetPhi() const { return mPhi; }
 			Vec<Dimension, int> GetClosestSurfIdx(const Vec<Dimension, int>& vIdx) const { return mClosestSurfIdx[vIdx]; }
 		};
 	}

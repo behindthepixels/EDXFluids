@@ -129,14 +129,29 @@ namespace EDX
 		void LiquidSolver<Dimension>::WriteToFile() const
 		{
 			char strFileName[260];
-			sprintf_s(strFileName, 260, "../Output/ParticleData%i.txt", miFrameIdx);
+			//sprintf_s(strFileName, 260, "../Output/Particles/ParticleData%i.txt", miFrameIdx);
 
 			std::ofstream outFile;
+			//outFile.open(strFileName);
+			//assert(outFile.is_open());
+
+			//for (const auto& particle : mParticles)
+			//	outFile << particle.vPos[0] << " " << particle.vPos[1] << " " << particle.vPos[2] << "\n";
+
+			//outFile.close();
+
+
+			sprintf_s(strFileName, 260, "../Output/LevelSet/LevelSetData%i.txt", miFrameIdx);
+
 			outFile.open(strFileName);
 			assert(outFile.is_open());
 
-			for(const auto& particle : mParticles)
-				outFile << particle.vPos[0] << " " << particle.vPos[1] << " " << particle.vPos[2] << "\n";
+			const Array<Dimension, float>& levelSet = mLevelSet.GetPhi();
+			outFile << levelSet.Size() << " ";
+			for (auto i = 0; i < levelSet.LinearSize(); i++)
+			{
+				outFile << levelSet[i] << " ";
+			}
 
 			outFile.close();
 		}
