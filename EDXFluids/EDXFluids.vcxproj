@@ -23,6 +23,7 @@
     <ClCompile Include="Ocean\Ocean.cpp" />
     <ClCompile Include="Smoke\Smoke.cpp" />
     <ClCompile Include="Util\VectorVisualizer.cpp" />
+    <ClCompile Include="Water\IsoSurface.cpp" />
     <ClCompile Include="Water\LevelSet.cpp" />
     <ClCompile Include="Water\Liquid.cpp" />
   </ItemGroup>
@@ -35,6 +36,7 @@
     <ClInclude Include="PCGSolver\sparse_matrix.h" />
     <ClInclude Include="Smoke\Smoke.h" />
     <ClInclude Include="Util\VectorVisualizer.h" />
+    <ClInclude Include="Water\IsoSurface.h" />
     <ClInclude Include="Water\LevelSet.h" />
     <ClInclude Include="Water\Liquid.h" />
   </ItemGroup>

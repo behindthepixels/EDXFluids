@@ -51,6 +51,9 @@
     <ClCompile Include="Ocean\Ocean.cpp">
       <Filter>Source Files\Ocean</Filter>
     </ClCompile>
+    <ClCompile Include="Water\IsoSurface.cpp">
+      <Filter>Source Files\Water</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\Fluid.h">
@@ -82,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="Ocean\Ocean.h">
       <Filter>Source Files\Ocean</Filter>
+    </ClInclude>
+    <ClInclude Include="Water\IsoSurface.h">
+      <Filter>Source Files\Water</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
