@@ -48,6 +48,8 @@ namespace EDX
 				}
 			};
 
+			static const float DEFAULT_VAL = 1e5f;
+
 			swap(mPhi, mPhiPrev);
 
 			vector<MarchItem> marchHeap;
@@ -99,7 +101,7 @@ namespace EDX
 					marchHeap.push_back(item);
 				}
 
-				mPhi[i] = float(Math::EDX_INFINITY);
+				mPhi[i] = DEFAULT_VAL;
 				mClosestSurfIdx[i] = Vec<Dimension, int>::ZERO;
 			}
 
@@ -113,7 +115,7 @@ namespace EDX
 					break;
 				marchHeap.pop_back();
 
-				if(mPhi[item.vCoord] == float(Math::EDX_INFINITY))
+				if (mPhi[item.vCoord] == DEFAULT_VAL)
 				{
 					mPhi[item.vCoord] = item.fDist;
 					mClosestSurfIdx[item.vCoord] = item.vLiquidCrd;
