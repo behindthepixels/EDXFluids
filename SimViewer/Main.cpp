@@ -7,6 +7,7 @@
 #include "Base/Fluid.h"
 #include "Smoke/Smoke.h"
 #include "Water/Liquid.h"
+#include "Water/IsoSurface.h"
 #include "Util/VectorVisualizer.h"
 
 using namespace EDX;
@@ -24,6 +25,31 @@ Camera gCamera;
 
 void OnInit(Object* pSender, EventArgs args)
 {
+	//IsoSurface isoSurface;
+	//isoSurface.Initialize(192, 192, 192, 1);
+
+	//std::ifstream inFile;
+	//inFile.open("C:/Users/Edward Liu/Dropbox/LevelSetData66.txt");
+
+	//const auto size = 192 * 192 * 192;
+	//float* data = new float[size];
+
+	//Array3f sphere;
+	//sphere.Init(Vector3i(192, 192, 192));
+	//for (auto i = 0; i < sphere.LinearSize(); i++)
+	//{
+	//	Vector3 pos = sphere.Index(i);
+	//	float dist = Math::Distance(pos, Vector3(96, 96, 96));
+	//	data[i] = dist < 48.0f ? -1e5f: 1e5f;
+	//	inFile >> data[i];
+	//}
+
+	//isoSurface.UpdateSurface(data);
+	//isoSurface.MarchingCube();
+	//isoSurface.GenerateObjMesh();
+
+	//SafeDeleteArray(data);
+
 	OpenGL::InitializeOpenGLExtensions();
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
