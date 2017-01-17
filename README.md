@@ -1,7 +1,3 @@
----
-layout: default
----
-
 # EDXFluids
 
 Please go to [behindthepixels.info/EDXFluids/](http://behindthepixels.info/EDXFluids/) for more detailed introduction.
