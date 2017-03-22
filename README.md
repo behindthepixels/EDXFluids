@@ -25,4 +25,4 @@ EDXFluids is currently built and tested only on Windows platform. Developer usin
 
 ## Results
 [![Smoke Passing through a Sphere](http://img.youtube.com/vi/ttFV1w4dwtI/0.jpg)](https://youtu.be/ttFV1w4dwtI "Smoke Passing through a Sphere")  
-*Smoke passing through a sphere, simulated with EDXFluids, rendered with [EDXRay](http://behindthepixels.info/EDXRay/)*
+*Smoke passing through a sphere, simulated with EDXFluids, rendered with [EDXRay](http://behindthepixels.io/EDXRay/)*
