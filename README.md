@@ -1,10 +1,10 @@
 # EDXFluids
 
-Please go to [behindthepixels.info/EDXFluids/](http://behindthepixels.info/EDXFluids/) for more detailed introduction.
+Please go to [behindthepixels.io/EDXFluids/](http://behindthepixels.io/EDXFluids/) for more detailed introduction.
 
-**EDXFluids** is a fully featured fluid simulator independently developed by [Edward Liu](http://behindthepixels.info/). It's built with C++ with multithreading support. EDXFluids heavily uses template in all of its data containers and algorithms so it can easily instantiate simulators of different dimensions. Development process is tremendously benefited from this since it is really simple to debug and visualize new algorithms in 2 dimensional simulations before trivially changing it to 3 dimensional. Currently, the simulator is capable of simulating smoke and liquid as well as their interaction with static solid objects.
+**EDXFluids** is a fully featured fluid simulator independently developed by [Edward Liu](http://behindthepixels.io/). It's built with C++ with multithreading support. EDXFluids heavily uses template in all of its data containers and algorithms so it can easily instantiate simulators of different dimensions. Development process is tremendously benefited from this since it is really simple to debug and visualize new algorithms in 2 dimensional simulations before trivially changing it to 3 dimensional. Currently, the simulator is capable of simulating smoke and liquid as well as their interaction with static solid objects.
 
-The source code of EDXFluids is highly self-contained and does not depend on any external library other than EDXUtil, which is a utility library developed by Edward Liu.
+The source code of EDXFluids is highly self-contained and does not depend on any external library other than [EDXUtil](https://github.com/behindthepixels/EDXUtil), which is a utility library developed by Edward Liu.
 
 EDXFluids is currently built and tested only on Windows platform. Developer using Visual Studio 2015 should be able to build the source code immediately after syncing. Porting to Linux or macOS should not be difficult since it there is no external dependency.
 
