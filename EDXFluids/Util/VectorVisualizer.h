@@ -3,7 +3,7 @@
 #include "EDXPrerequisites.h"
 #include "../Base/Fluid.h"
 #include "Math/BoundingBox.h"
-#include "RNG/Random.h"
+#include "Core/Random.h"
 
 
 class glShader;

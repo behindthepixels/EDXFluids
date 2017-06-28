@@ -2,7 +2,7 @@
 
 #include "EDXPrerequisites.h"
 #include "../Base/ForwardDecl.h"
-#include "Memory/Array.h"
+#include "Containers/DimensionalArray.h"
 #include "Math/Vector.h"
 
 namespace EDX
@@ -13,9 +13,9 @@ namespace EDX
 		class LevelSet
 		{
 		protected:
-			Array<Dimension, float> mPhi;
-			Array<Dimension, float> mPhiPrev;
-			Array<Dimension, Vec<Dimension, int>> mClosestSurfIdx;
+			DimensionalArray<Dimension, float> mPhi;
+			DimensionalArray<Dimension, float> mPhiPrev;
+			DimensionalArray<Dimension, Vec<Dimension, int>> mClosestSurfIdx;
 
 		public:
 			void Initialize(const Vec<Dimension, int>& vDim);
@@ -28,8 +28,8 @@ namespace EDX
 					mPhi[i] = func(vPos);
 				}
 			}
-			void ReInitSDF(const Array<Dimension, CellType>& markers, const CellType type, const float fNarrowBand = 1e10f);
-			const Array<Dimension, float>& GetPhi() const { return mPhi; }
+			void ReInitSDF(const DimensionalArray<Dimension, CellType>& markers, const CellType type, const float fNarrowBand = 1e10f);
+			const DimensionalArray<Dimension, float>& GetPhi() const { return mPhi; }
 			Vec<Dimension, int> GetClosestSurfIdx(const Vec<Dimension, int>& vIdx) const { return mClosestSurfIdx[vIdx]; }
 		};
 	}

@@ -2,7 +2,7 @@
 
 #include "EDXPrerequisites.h"
 #include "../Base/ForwardDecl.h"
-#include "Memory/Array.h"
+#include "Containers/DimensionalArray.h"
 #include "Math/Vector.h"
 
 namespace EDX

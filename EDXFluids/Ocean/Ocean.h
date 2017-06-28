@@ -1,7 +1,7 @@
 #include "EDXPrerequisites.h"
 #include "Math/Vector.h"
-#include "Memory/Array.h"
-#include "RNG/Random.h"
+#include "Containers/DimensionalArray.h"
+#include "Core/Random.h"
 
 namespace EDX
 {
@@ -23,10 +23,10 @@ namespace EDX
 		float mfAmpFactor;
 
 		// Wave frequency
-		Array<2, Vector2> mavH0;
-		Array<2, Vector2> mavHt;
-		Array<2, Vector2> mavTroppyX;
-		Array<2, Vector2> mavTroppyZ;
+		DimensionalArray<2, Vector2> mavH0;
+		DimensionalArray<2, Vector2> mavHt;
+		DimensionalArray<2, Vector2> mavTroppyX;
+		DimensionalArray<2, Vector2> mavTroppyZ;
 		Array2f mafOmega;
 
 		Array2f mafHeightData;

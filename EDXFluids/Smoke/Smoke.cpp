@@ -1,6 +1,8 @@
 #include "Smoke.h"
 #include "Math/Vector.h"
 
+#include <fstream>
+
 namespace EDX
 {
 	namespace FluidSim

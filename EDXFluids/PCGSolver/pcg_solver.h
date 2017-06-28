@@ -10,7 +10,7 @@
 #include <cmath>
 #include "sparse_matrix.h"
 #include "blas_wrapper.h"
-#include "Memory/Array.h"
+#include "Containers/DimensionalArray.h"
 
 //============================================================================
 // A simple compressed sparse column data structure (with separate diagonal)
@@ -242,7 +242,7 @@ struct PCGSolver
    }
 
    template<size_t Dimension>
-   bool solve(const SparseMatrix<T> &matrix, const EDX::Array<Dimension, T> &rhs, EDX::Array<Dimension, T> &result, T &residual_out, int &iterations_out) 
+   bool solve(const SparseMatrix<T> &matrix, const EDX::DimensionalArray<Dimension, T> &rhs, EDX::DimensionalArray<Dimension, T> &result, T &residual_out, int &iterations_out) 
    {
       unsigned int n=matrix.n;
       if(m.size()!=n){ m.resize(n); s.resize(n); z.resize(n); r.resize(n); }

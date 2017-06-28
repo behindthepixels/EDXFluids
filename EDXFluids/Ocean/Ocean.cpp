@@ -2,6 +2,8 @@
 #include "Math/EDXMath.h"
 #include "Math/FFT.h"
 
+#include <fstream>
+
 #include <ppl.h>
 using namespace concurrency;
 

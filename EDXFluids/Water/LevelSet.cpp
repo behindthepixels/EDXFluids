@@ -3,6 +3,9 @@
 #include "Math/EDXMath.h"
 #include "Math/Vector.h"
 
+#include <vector>
+using namespace std;
+
 #include <ppl.h>
 using namespace Concurrency;
 
@@ -19,7 +22,7 @@ namespace EDX
 		}
 
 		template<uint Dimension>
-		void LevelSet<Dimension>::ReInitSDF(const Array<Dimension, CellType>& markers, const CellType type, const float fNarrowBand)
+		void LevelSet<Dimension>::ReInitSDF(const DimensionalArray<Dimension, CellType>& markers, const CellType type, const float fNarrowBand)
 		{
 			parallel_for(0, (int)mPhi.LinearSize(), [&](int i)
 			{
@@ -50,7 +53,7 @@ namespace EDX
 
 			static const float DEFAULT_VAL = 1e5f;
 
-			swap(mPhi, mPhiPrev);
+			Swap(mPhi, mPhiPrev);
 
 			vector<MarchItem> marchHeap;
 			for(auto i = 0; i < mPhi.LinearSize(); i++)

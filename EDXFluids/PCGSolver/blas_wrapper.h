@@ -4,7 +4,7 @@
 // Simple placeholder code for BLAS calls - replace with calls to a real BLAS library
 
 #include <vector>
-#include "Memory/Array.h"
+#include "Containers/DimensionalArray.h"
 
 namespace BLAS{
 
@@ -54,7 +54,7 @@ namespace BLAS{
 	}
 
 	template<size_t Dimension>
-	inline void add_scaled(double alpha, const std::vector<double> &x, EDX::Array<Dimension, double> &y)
+	inline void add_scaled(double alpha, const std::vector<double> &x, EDX::DimensionalArray<Dimension, double> &y)
 	{ 
 		//cblas_daxpy((int)x.size(), alpha, &x[0], 1, &y[0], 1); 
 		parallel_for(0, (int)x.size(), [&](int i)

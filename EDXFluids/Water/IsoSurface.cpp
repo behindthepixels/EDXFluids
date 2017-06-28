@@ -1,5 +1,6 @@
 #include "IsoSurface.h"
 
+#include <fstream>
 
 namespace EDX
 {

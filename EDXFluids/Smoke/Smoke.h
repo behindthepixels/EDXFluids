@@ -11,13 +11,13 @@ namespace EDX
 		{
 		private:
 			// Density
-			Array<Dimension, float> mDensity;
-			Array<Dimension, float> mTempDensity;
+			DimensionalArray<Dimension, float> mDensity;
+			DimensionalArray<Dimension, float> mTempDensity;
 			// Temperature
-			Array<Dimension, float> mTemperature;
-			Array<Dimension, float> mTempTemperature;
+			DimensionalArray<Dimension, float> mTemperature;
+			DimensionalArray<Dimension, float> mTempTemperature;
 
-			Array<Dimension, float> mBuoyancy;
+			DimensionalArray<Dimension, float> mBuoyancy;
 
 			// Smoke parameters
 			float mfDiffuseRate;

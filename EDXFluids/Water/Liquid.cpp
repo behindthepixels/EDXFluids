@@ -1,6 +1,8 @@
 #include "Liquid.h"
 #include "Math/Vector.h"
 
+#include <fstream>
+
 namespace EDX
 {
 	namespace FluidSim
@@ -146,7 +148,7 @@ namespace EDX
 			outFile.open(strFileName);
 			assert(outFile.is_open());
 
-			const Array<Dimension, float>& levelSet = mLevelSet.GetPhi();
+			const DimensionalArray<Dimension, float>& levelSet = mLevelSet.GetPhi();
 			outFile << levelSet.Size() << " ";
 			for (auto i = 0; i < levelSet.LinearSize(); i++)
 			{

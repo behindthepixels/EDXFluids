@@ -2,12 +2,15 @@
 
 #include "EDXPrerequisites.h"
 #include "ForwardDecl.h"
-#include "Memory/Array.h"
+#include "Containers/DimensionalArray.h"
 #include "Math/Vector.h"
 #include "../pcgsolver/sparse_matrix.h"
 #include "../pcgsolver/pcg_solver.h"
 
 #include "../Water/LevelSet.h"
+
+#include <vector>
+using namespace std;
 
 namespace EDX
 {
@@ -46,38 +49,38 @@ namespace EDX
 
 			// Flip Particles
 			vector<Particle<Dimension>> mParticles;
-			Array<Dimension, float> mWeights;
-			Array<Dimension, int> mParticleCounts;
+			DimensionalArray<Dimension, float> mWeights;
+			DimensionalArray<Dimension, int> mParticleCounts;
 
 			// Fluid data
-			Array<Dimension, float> mVelocity[Dimension];
-			Array<Dimension, float> mTempVel[Dimension];
-			Array<Dimension, float> mDeltaVel[Dimension];
-			Array<Dimension, float> mMCBuffer;
-			Array<Dimension, float> mVelocityMCBuffer[Dimension];
+			DimensionalArray<Dimension, float> mVelocity[Dimension];
+			DimensionalArray<Dimension, float> mTempVel[Dimension];
+			DimensionalArray<Dimension, float> mDeltaVel[Dimension];
+			DimensionalArray<Dimension, float> mMCBuffer;
+			DimensionalArray<Dimension, float> mVelocityMCBuffer[Dimension];
 			
-			Array<Dimension, float> mVolume[Dimension];
-			Array<Dimension, float> mFluidVolume[Dimension];
+			DimensionalArray<Dimension, float> mVolume[Dimension];
+			DimensionalArray<Dimension, float> mFluidVolume[Dimension];
 			
 
 			// Vorticity Confinement buffers
-			Array<Dimension, Vector3> mCurl;
-			Array<Dimension, float> mCurlMag;
-			Array<Dimension, Vector3> mVCForce;
+			DimensionalArray<Dimension, Vector3> mCurl;
+			DimensionalArray<Dimension, float> mCurlMag;
+			DimensionalArray<Dimension, Vector3> mVCForce;
 
 			// PCG Solver data
 			PCGSolver<double> mPCGSolver;
 			SparseMatrixd mMatrix;
-			Array<Dimension, double> mDivergence;
+			DimensionalArray<Dimension, double> mDivergence;
 
 		public:
-			Array<Dimension, CellType> mMarkers;
+			DimensionalArray<Dimension, CellType> mMarkers;
 			LevelSet<Dimension> mLevelSet;
 			LevelSet<Dimension> mSolidPhi;
-			Array<Dimension, double> mPressure;
+			DimensionalArray<Dimension, double> mPressure;
 			// Visual data
-			Array<Dimension, float> mAvgVelocity[Dimension];
-			Array<Dimension, float> mVisual;
+			DimensionalArray<Dimension, float> mAvgVelocity[Dimension];
+			DimensionalArray<Dimension, float> mVisual;
 
 		public:
 			void Initialize(const Vec<Dimension, uint>& vDim, const Vec<Dimension, float> vFluidExtent);
@@ -89,24 +92,24 @@ namespace EDX
 			virtual void Step(const float fDt);
 			// Finite element advection solver
 			void AdvectVelocitySemiLag(const float fDt,
-				Array<Dimension, float> grid[Dimension],
-				Array<Dimension, float> prevVelGrid[Dimension],
-				Array<Dimension, float> velGrid[Dimension],
+				DimensionalArray<Dimension, float> grid[Dimension],
+				DimensionalArray<Dimension, float> prevVelGrid[Dimension],
+				DimensionalArray<Dimension, float> velGrid[Dimension],
 				const bool b2ndOrderLerp = false);
 			void AdvectVelocityMacCormack(const float fDt,
-				Array<Dimension, float> velGrid[Dimension],
-				Array<Dimension, float> prevVelGrid[Dimension]);
+				DimensionalArray<Dimension, float> velGrid[Dimension],
+				DimensionalArray<Dimension, float> prevVelGrid[Dimension]);
 			void AdvectValueSemiLag(const float fDt,
-				Array<Dimension, float>& grid,
-				Array<Dimension, float>& prevGrid,
+				DimensionalArray<Dimension, float>& grid,
+				DimensionalArray<Dimension, float>& prevGrid,
 				const bool b2ndOrderLerp = false);
 			void AdvectValueMacCormack(const float fDt,
-				Array<Dimension, float>& grid,
-				Array<Dimension, float>& prevGrid);
+				DimensionalArray<Dimension, float>& grid,
+				DimensionalArray<Dimension, float>& prevGrid);
 			void DiffuseValueGaussSedel(const float fDt,
 				const float fRate,
-				Array<Dimension, float>& grid,
-				Array<Dimension, float>& prevGrid);
+				DimensionalArray<Dimension, float>& grid,
+				DimensionalArray<Dimension, float>& prevGrid);
 			void VorticityConfinement(const float fDt,
 				const float fRate);
 			void CalcVelocityAtCellCenter();
@@ -130,13 +133,13 @@ namespace EDX
 			float GetCFL() const;
 
 			// General MAC grid operation
-			Vec<Dimension, float> GetValueFace(const Vec<Dimension, float>& vPos, const Array<Dimension, float> velField[Dimension], const bool b2ndOrderLerp = false) const;
-			float GetValueFace(const Vec<Dimension, float>& vPos, const Array<Dimension, float> velField[Dimension], const Component comp, const bool b2ndOrderLerp = false) const;
-			float GetValue(const Vec<Dimension, float>& vPos, const Array<Dimension, float>& valField, const bool b2ndOrderLerp = false) const;
-			Vec<Dimension, float> GetValue(const Vec<Dimension, float>& vPos, const Array<Dimension, float> valField[Dimension], const bool b2ndOrderLerp = false) const;
-			float InterpolateValue(const Vec<Dimension, float>& vPos, const Array<Dimension, float>& grid) const;
-			float InterpolateValue2ndOrder(const Vec<Dimension, float>& vPos, const Array<Dimension, float>& grid) const;
-			Vec<Dimension, float> InterpolateGradient(const Vec<Dimension, float>& vPos, const Array<Dimension, float>& grid) const;
+			Vec<Dimension, float> GetValueFace(const Vec<Dimension, float>& vPos, const DimensionalArray<Dimension, float> velField[Dimension], const bool b2ndOrderLerp = false) const;
+			float GetValueFace(const Vec<Dimension, float>& vPos, const DimensionalArray<Dimension, float> velField[Dimension], const Component comp, const bool b2ndOrderLerp = false) const;
+			float GetValue(const Vec<Dimension, float>& vPos, const DimensionalArray<Dimension, float>& valField, const bool b2ndOrderLerp = false) const;
+			Vec<Dimension, float> GetValue(const Vec<Dimension, float>& vPos, const DimensionalArray<Dimension, float> valField[Dimension], const bool b2ndOrderLerp = false) const;
+			float InterpolateValue(const Vec<Dimension, float>& vPos, const DimensionalArray<Dimension, float>& grid) const;
+			float InterpolateValue2ndOrder(const Vec<Dimension, float>& vPos, const DimensionalArray<Dimension, float>& grid) const;
+			Vec<Dimension, float> InterpolateGradient(const Vec<Dimension, float>& vPos, const DimensionalArray<Dimension, float>& grid) const;
 			float FractionInside(const float fPhiLeft, const float fPhiRight) const;
 
 			template<typename PhiFunc>

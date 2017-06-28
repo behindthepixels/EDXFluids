@@ -3,7 +3,7 @@
 #include "Math/EDXMath.h"
 #include "Math/Vector.h"
 
-#include "RNG/Random.h"
+#include "Core/Random.h"
 
 #include <ppl.h>
 using namespace Concurrency;
@@ -388,9 +388,9 @@ namespace EDX
 
 		template<uint Dimension>
 		void FluidSolver<Dimension>::AdvectVelocitySemiLag(const float fDt,
-			Array<Dimension, float> grid[Dimension],
-			Array<Dimension, float> prevVelGrid[Dimension],
-			Array<Dimension, float> velGrid[Dimension],
+			DimensionalArray<Dimension, float> grid[Dimension],
+			DimensionalArray<Dimension, float> prevVelGrid[Dimension],
+			DimensionalArray<Dimension, float> velGrid[Dimension],
 			const bool b2ndOrderLerp)
 		{
 			for(auto iDim = 0; iDim < Dimension; iDim++)
@@ -416,8 +416,8 @@ namespace EDX
 
 		template<uint Dimension>
 		void FluidSolver<Dimension>::AdvectVelocityMacCormack(const float fDt,
-			Array<Dimension, float> velGrid[Dimension],
-			Array<Dimension, float> prevVelGrid[Dimension])
+			DimensionalArray<Dimension, float> velGrid[Dimension],
+			DimensionalArray<Dimension, float> prevVelGrid[Dimension])
 		{
 			AdvectVelocitySemiLag(fDt, velGrid, prevVelGrid, prevVelGrid);
 			AdvectVelocitySemiLag(-fDt, velGrid, mVelocityMCBuffer, prevVelGrid);
@@ -466,8 +466,8 @@ namespace EDX
 
 		template<uint Dimension>
 		void FluidSolver<Dimension>::AdvectValueSemiLag(const float fDt,
-			Array<Dimension, float>& grid,
-			Array<Dimension, float>& prevGrid,
+			DimensionalArray<Dimension, float>& grid,
+			DimensionalArray<Dimension, float>& prevGrid,
 			const bool b2ndOrderLerp)
 		{
 			swap(grid, prevGrid);
@@ -487,8 +487,8 @@ namespace EDX
 
 		template<uint Dimension>
 		void FluidSolver<Dimension>::AdvectValueMacCormack(const float fDt,
-			Array<Dimension, float>& grid,
-			Array<Dimension, float>& prevGrid)
+			DimensionalArray<Dimension, float>& grid,
+			DimensionalArray<Dimension, float>& prevGrid)
 		{
 			AdvectValueSemiLag(fDt, grid, prevGrid);
 			AdvectValueSemiLag(-fDt, grid, mMCBuffer);
@@ -531,8 +531,8 @@ namespace EDX
 		template<uint Dimension>
 		void FluidSolver<Dimension>::DiffuseValueGaussSedel(const float fDt,
 			const float fRate,
-			Array<Dimension, float>& grid,
-			Array<Dimension, float>& prevGrid)
+			DimensionalArray<Dimension, float>& grid,
+			DimensionalArray<Dimension, float>& prevGrid)
 		{
 			if(fRate == 0.0f)
 				return;
@@ -973,7 +973,7 @@ namespace EDX
 		}
 
 		template<uint Dimension>
-		Vec<Dimension, float> FluidSolver<Dimension>::GetValueFace(const Vec<Dimension, float>& vPos, const Array<Dimension, float> velGrid[Dimension], const bool b2ndOrderLerp) const
+		Vec<Dimension, float> FluidSolver<Dimension>::GetValueFace(const Vec<Dimension, float>& vPos, const DimensionalArray<Dimension, float> velGrid[Dimension], const bool b2ndOrderLerp) const
 		{
 			Vec<Dimension, float> vRet;
 			Vec<Dimension, float> vIdx = vPos/* * mfInvDx*/;
@@ -987,7 +987,7 @@ namespace EDX
 		}
 
 		template<uint Dimension>
-		float FluidSolver<Dimension>::GetValueFace(const Vec<Dimension, float>& vPos, const Array<Dimension, float> velGrid[Dimension], const Component comp, const bool b2ndOrderLerp) const
+		float FluidSolver<Dimension>::GetValueFace(const Vec<Dimension, float>& vPos, const DimensionalArray<Dimension, float> velGrid[Dimension], const Component comp, const bool b2ndOrderLerp) const
 		{
 			float fRet = 0.0f;
 			int iDim = int(comp);
@@ -999,14 +999,14 @@ namespace EDX
 		}
 
 		template<uint Dimension>
-		float FluidSolver<Dimension>::GetValue(const Vec<Dimension, float>& vPos, const Array<Dimension, float>& grid, const bool b2ndOrderLerp) const
+		float FluidSolver<Dimension>::GetValue(const Vec<Dimension, float>& vPos, const DimensionalArray<Dimension, float>& grid, const bool b2ndOrderLerp) const
 		{
 			Vec<Dimension, float> vIdx = vPos/* * mfInvDx*/;
 			return b2ndOrderLerp ? InterpolateValue2ndOrder(vIdx, grid) : InterpolateValue(vIdx, grid);
 		}
 
 		template<uint Dimension>
-		Vec<Dimension, float> FluidSolver<Dimension>::GetValue(const Vec<Dimension, float>& vPos, const Array<Dimension, float> grid[Dimension], const bool b2ndOrderLerp) const
+		Vec<Dimension, float> FluidSolver<Dimension>::GetValue(const Vec<Dimension, float>& vPos, const DimensionalArray<Dimension, float> grid[Dimension], const bool b2ndOrderLerp) const
 		{
 			Vec<Dimension, float> vRet;
 			Vec<Dimension, float> vIdx = vPos/* * mfInvDx*/;
@@ -1018,7 +1018,7 @@ namespace EDX
 
 
 		template<uint Dimension>
-		float FluidSolver<Dimension>::InterpolateValue(const Vec<Dimension, float>& vIdx, const Array<Dimension, float>& grid) const
+		float FluidSolver<Dimension>::InterpolateValue(const Vec<Dimension, float>& vIdx, const DimensionalArray<Dimension, float>& grid) const
 		{
 			float afVal[Math::Pow2<Dimension>::Value];
 
@@ -1040,7 +1040,7 @@ namespace EDX
 		}
 
 		template<uint Dimension>
-		float FluidSolver<Dimension>::InterpolateValue2ndOrder(const Vec<Dimension, float>& vIdx, const Array<Dimension, float>& grid) const
+		float FluidSolver<Dimension>::InterpolateValue2ndOrder(const Vec<Dimension, float>& vIdx, const DimensionalArray<Dimension, float>& grid) const
 		{
 			float afVal[Math::Pow4<Dimension>::Value];
 
@@ -1062,7 +1062,7 @@ namespace EDX
 		}
 
 		template<uint Dimension>
-		Vec<Dimension, float> FluidSolver<Dimension>::InterpolateGradient(const Vec<Dimension, float>& vIdx, const Array<Dimension, float>& grid) const
+		Vec<Dimension, float> FluidSolver<Dimension>::InterpolateGradient(const Vec<Dimension, float>& vIdx, const DimensionalArray<Dimension, float>& grid) const
 		{
 			float afVal[Math::Pow2<Dimension>::Value];
 

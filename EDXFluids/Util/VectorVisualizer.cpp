@@ -1,7 +1,7 @@
 #include "VectorVisualizer.h"
 #include "Math/EDXMath.h"
 #include "Math/BoundingBox.h"
-#include "RNG/Random.h"
+#include "Core/Random.h"
 
 #include "Graphics/OpenGL.h"
 
